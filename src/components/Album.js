@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
+import PlayerBar from './PlayerBar';
 
  class Album extends Component {
    constructor(props) {
@@ -60,15 +61,15 @@ handleHover(song, index) {
 
   if (isCurrentSong){
     if (isPlaying) {
-      return <span><img src="/assets/images/icons/pause.svg" alt="pause"></img></span>
+      return <span className="ion-md-pause"></span>
     }
     else {
-      return <span><img src="/assets/images/icons/play.svg" alt="play"></img></span>
+      return <span className="ion-md-play-circle"></span>
     }
   }
   else {
     if (hoveredSong === song){
-      return <span><img src="/assets/images/icons/play.svg" alt="play"></img></span>
+      return <span className="ion-md-play-circle"></span>
     }
     else {
       return <span>{index + 1}</span>
@@ -107,6 +108,7 @@ handleHover(song, index) {
             }
            </tbody>
          </table> 
+         <PlayerBar />
        </section>
      );
    }
