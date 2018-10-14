@@ -10,9 +10,10 @@ import albumData from './../data/albums';
      });
 
      this.state = {
-       album: album,
+       album: album, 
        currentSong: album.songs[0],
-       isPlaying: false
+       isPlaying: false,
+       isHovered: null,
      };   
       
      this.audioElement = document.createElement('audio');
@@ -43,6 +44,37 @@ handleSongClick(song) {
     this.play();
   }
 }
+
+handleMouseOver(song) {
+  this.setState ({isHovered: song})
+}
+
+handleMouseOut(song) {
+  this.setState ({isHovered: null})
+}
+
+handleHover(song, index) {
+  const isCurrentSong = this.state.currentSong === song;
+  const hoveredSong = this.state.isHovered;
+  const isPlaying = this.state.isPlaying;
+
+  if (isCurrentSong){
+    if (isPlaying) {
+      return <span><img src="/assets/images/icons/pause.svg" alt="pause"></img></span>
+    }
+    else {
+      return <span><img src="/assets/images/icons/play.svg" alt="play"></img></span>
+    }
+  }
+  else {
+    if (hoveredSong === song){
+      return <span><img src="/assets/images/icons/play.svg" alt="play"></img></span>
+    }
+    else {
+      return <span>{index + 1}</span>
+    }
+  }
+}
  
    render() {
      return (
@@ -63,8 +95,11 @@ handleSongClick(song) {
            </colgroup>  
            <tbody>
                {this.state.album.songs.map( (song, index) =>
-                <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
-                  <td>{index + 1}</td>
+                <tr className="song" key={index} 
+                  onClick={() => this.handleSongClick(song)}
+                  onMouseOver={() => this.handleMouseOver(song)}
+                  onMouseOut={() => this.handleMouseOut(song)}>
+                  <td>{this.handleHover(song, index)}</td>
                   <td>{song.title}</td>
                   <td>{song.duration} seconds</td>
                 </tr>
