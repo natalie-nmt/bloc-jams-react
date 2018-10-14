@@ -87,14 +87,8 @@ handlePrevClick() {
 
 handleNextClick() {
   const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
-  const numberOfSongs = this.state.album.songs.length; 
-  let newIndex = 0;
-  if (currentIndex + 1 < numberOfSongs) {
-    newIndex = currentIndex + 1;
-  }
-  else {
-    newIndex = currentIndex;
-  }
+  const maxIndex = this.state.album.songs.length - 1;
+  const newIndex = Math.min(maxIndex, currentIndex + 1);
   const newSong = this.state.album.songs[newIndex];
   this.setSong(newSong);
   this.play();
