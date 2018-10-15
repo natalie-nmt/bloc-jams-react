@@ -133,20 +133,21 @@ handleVolumeChange(e) {
   this.setState({ volume: newVolume });
 }
 
-formatTime (time) {
-  const dividedn = time/60
-  const minutes = Math.floor(dividedn);
-  const seconds = parseInt((dividedn - minutes) * 100);
-  if (isNaN(seconds)) {
+formatTime(duration) {
+  var minutes = parseInt(duration / 60);
+  var formattedTime = parseInt(duration % 60);
+  if (isNaN(duration)) {
     return "--:--"
   }
-    else if (seconds < 10) {
-      return minutes + ":" + "0" + seconds
+  else {
+    if (formattedTime < 10) {
+      return minutes + ":" + "0" + formattedTime
     }
     else {
-      return minutes + ":" + seconds
+     return minutes + ":" + formattedTime
     }
-} 
+  }
+}
 
    render() {
      return (
