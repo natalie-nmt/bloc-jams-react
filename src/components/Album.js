@@ -16,6 +16,7 @@ import PlayerBar from './PlayerBar';
        isPlaying: false,
        isHovered: null,
        currentTime: 0,
+       volume: .8,
        duration: album.songs[0].duration,
      };   
       
@@ -30,16 +31,21 @@ componentDidMount() {
     },
     durationchange: e => {
       this.setState({ duration: this.audioElement.duration });
-    }
+    },
+    volumechange: e => {
+      this.setState({ volume: this.audioElement.volume });
+    },
   };
   this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
   this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+  this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
 }
 
 componentWillUnmount() {
   this.audioElement.src = null;
   this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
   this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+  this.audioElement.removeEventListener('volumechange', this.eventListeners.volumechange);
 }
 
 play() {
@@ -121,6 +127,27 @@ handleTimeChange(e) {
   this.setState({ currentTime: newTime });
 }
 
+handleVolumeChange(e) {
+  const newVolume = e.target.value;
+  this.audioElement.volume = newVolume;
+  this.setState({ volume: newVolume });
+}
+
+formatTime (time) {
+  const dividedn = time/60
+  const minutes = Math.floor(dividedn);
+  const seconds = parseInt((dividedn - minutes) * 100);
+  if (isNaN(seconds)) {
+    return "--:--"
+  }
+    else if (seconds < 10) {
+      return minutes + ":" + "0" + seconds
+    }
+    else {
+      return minutes + ":" + seconds
+    }
+} 
+
    render() {
      return (
        <section className="album">
@@ -146,7 +173,7 @@ handleTimeChange(e) {
                   onMouseOut={() => this.handleMouseOut(song)}>
                   <td>{this.handleHover(song, index)}</td>
                   <td>{song.title}</td>
-                  <td>{song.duration} seconds</td>
+                  <td>{this.formatTime(song.duration)}</td>
                 </tr>
               )
             }
@@ -157,10 +184,13 @@ handleTimeChange(e) {
          currentSong={this.state.currentSong}
          currentTime={this.audioElement.currentTime}
          duration={this.audioElement.duration}
+         volume={this.audioElement.volume}
          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
          handlePrevClick={() => this.handlePrevClick()}
          handleNextClick={() => this.handleNextClick()}
          handleTimeChange={(e) => this.handleTimeChange(e)}
+         handleVolumeChange={(e) => this.handleVolumeChange(e)}
+         formatTime={(time) => this.formatTime(time)}
           />
        </section>
      );
