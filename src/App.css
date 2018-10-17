@@ -1,10 +1,88 @@
 .App {
+  background-color: #D8BFD8;
+}
+
+html {
+  padding: 0px 0px 0px 0px;
+  background-color: #D8BFD8;
+}
+
+.point {
+  margin: 2em;
+  padding: 2em;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23d6d3d9' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  border-style: solid;
+  border-width: 0px;
+  box-shadow: 5px 5px 15px #747374;
+  border-color: #E6E6FA;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.bodycontent {
+  margin: 30px;
   text-align: center;
 }
 
+.album, .library {
+  margin: 2em;
+  padding: 2em;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23d6d3d9' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  border-radius: 15px;
+}
+
+#album-cover-art, .albumCovers {
+  margin: 2em 2em 2em 2em;
+  border-width: 0px;
+  box-shadow: 5px 5px 15px #747374;
+  border-color: #E6E6FA;
+  border-radius: 15px;
+}
+
+/*@font-face {
+  font-family: 'Pacifico';
+  font-style: cursive;
+  font-weight: 400;
+  src: url(https://fonts.googleapis.com/css?family=Pacifico)
+}
+
+.App {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #424242;
+  font-size: large;
+  text-align: left;
+  background-color: #F4F6F5;
+  padding: 20px 20px 20px 20px;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+}
+
+nav {
+  padding: 0px;
+}
+
+ul {
+  display: inline;
+}
+
+li {
+  padding: 0px;
+  display: block;
+}
+
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  float: left;
   height: 80px;
+}
+
+albumCovers {
+  box-shadow: 20px 20px 40px -2px #000000;
 }
 
 .App-header {
@@ -26,3 +104,4 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+*/
